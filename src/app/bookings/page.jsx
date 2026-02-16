@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const fetchBookings = async () => {
-  const res = await fetch(`http://localhost:3000/api/bookings`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_server}/api/bookings`);
   const data = await res.json();
   return data;
 };
@@ -26,32 +26,36 @@ const BookingsPage = async () => {
                 {booking.name}
               </h2>
               <p className="text-gray-600 mb-1">
-                <span className="font-medium">Category:</span> {booking.category}
+                <span className="font-medium">Category:</span>{" "}
+                {booking.category}
               </p>
               <p className="text-gray-600 mb-1">
-                <span className="font-medium">Duration:</span> {booking.duration} hrs
+                <span className="font-medium">Duration:</span>{" "}
+                {booking.duration} hrs
               </p>
               <p className="text-gray-600 mb-1">
-                <span className="font-medium">Location:</span> {booking.location}
+                <span className="font-medium">Location:</span>{" "}
+                {booking.location}
               </p>
               <p className="text-gray-600 mb-1">
-                <span className="font-medium">Total Cost:</span> ${booking.totalCost}
+                <span className="font-medium">Total Cost:</span> $
+                {booking.totalCost}
               </p>
               <p className="text-gray-600 mb-1">
-                <span className="font-medium">Date:</span> {new Date(booking.date).toLocaleString()}
+                <span className="font-medium">Date:</span>{" "}
+                {new Date(booking.date).toLocaleString()}
               </p>
               <p
                 className={`mt-2 font-semibold ${
                   booking.status === "Pending"
                     ? "text-yellow-600"
                     : booking.status === "Confirmed"
-                    ? "text-green-600"
-                    : "text-red-600"
+                      ? "text-green-600"
+                      : "text-red-600"
                 }`}
               >
                 Status: {booking.status}
               </p>
-              
             </div>
           ))
         )}
