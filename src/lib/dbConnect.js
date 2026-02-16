@@ -16,7 +16,7 @@ const client = new MongoClient(uri, {
 });
 
 
-const dbConnect=(collections)=>{
+export const dbConnect=(collections)=>{
     return client.db(db).collection(collections)
 
 }
