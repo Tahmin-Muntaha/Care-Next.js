@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import BookNowbtn from './BookNowbtn';
 
 const CaresDetails = ({ care }) => {
   return (
@@ -59,12 +60,7 @@ const CaresDetails = ({ care }) => {
 
         {/* Book Now Button */}
         <div className="mt-6">
-          <Link
-            href={`/book/${care._id}`}
-            className="bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors inline-block"
-          >
-            Book Now
-          </Link>
+          <BookNowbtn care={care}></BookNowbtn>
         </div>
       </div>
     </div>
